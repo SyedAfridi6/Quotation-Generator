@@ -1,0 +1,151 @@
+.form-section {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin-bottom: 24px;
+}
+
+.form-section:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.form-section-header {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  padding: 24px 30px;
+  border-bottom: 2px solid #e2e8f0;
+  position: relative;
+}
+
+.section-title-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.section-icon {
+  font-size: 1.5rem;
+  color: #667eea;
+  margin-top: 4px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.section-title-wrapper {
+  flex: 1;
+  z-index: 1;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b !important;
+  margin-bottom: 8px;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1;
+  position: relative;
+}
+
+.step-number {
+  color: #667eea !important;
+  font-weight: 600;
+}
+
+.required-indicator {
+  color: #ef4444 !important;
+  font-size: 1.2rem;
+  margin-left: 4px;
+}
+
+.section-description {
+  color: #64748b !important;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  z-index: 1;
+  position: relative;
+}
+
+.form-section-content {
+  padding: 30px;
+  background: white;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure all text is visible */
+.form-section * {
+  position: relative;
+  z-index: 1;
+}
+
+.form-section h1,
+.form-section h2,
+.form-section h3,
+.form-section h4,
+.form-section h5,
+.form-section h6 {
+  color: #1e293b !important;
+  font-weight: 600;
+}
+
+.form-section p,
+.form-section span,
+.form-section div {
+  color: #374151 !important;
+}
+
+.form-section label {
+  color: #374151 !important;
+  font-weight: 600;
+}
+
+/* Section variants with better text visibility */
+.form-section.primary .form-section-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.form-section.primary .section-title,
+.form-section.primary .section-description,
+.form-section.primary .section-icon {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .form-section-header {
+    padding: 20px;
+  }
+  
+  .form-section-content {
+    padding: 20px;
+  }
+  
+  .section-title {
+    font-size: 1.3rem;
+  }
+  
+  .section-description {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-section-header {
+    padding: 16px;
+  }
+  
+  .form-section-content {
+    padding: 16px;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,360 @@
+.multi-select-dropdown {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.multi-select-dropdown.open .multi-select-arrow {
+  transform: rotate(180deg);
+}
+
+.multi-select-trigger {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  min-height: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+.multi-select-trigger:hover {
+  border-color: #8b5cf6;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+  transform: translateY(-1px);
+}
+
+.multi-select-trigger:focus-within {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1), 0 8px 25px rgba(139, 92, 246, 0.2);
+}
+
+.multi-select-value {
+  flex: 1;
+  color: #374151 !important;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.multi-select-value:empty::before {
+  content: attr(data-placeholder);
+  color: #9ca3af !important;
+  font-weight: 400;
+}
+
+.multi-select-arrow {
+  color: #6b7280 !important;
+  transition: transform 0.3s ease;
+  font-size: 0.875rem;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+/* Portal dropdown styling - THIS IS THE KEY FIX */
+.multi-select-dropdown-portal {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  max-height: 320px;
+  overflow: hidden;
+  z-index: 99999 !important;
+  
+  /* Animation */
+  animation: dropdownSlideIn 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.multi-select-dropdown-portal.dropup {
+  animation: dropdownSlideUp 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes dropdownSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scaleY(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@keyframes dropdownSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scaleY(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+.multi-select-search {
+  padding: 12px;
+  border-bottom: 1px solid #f3f4f6;
+  position: relative;
+  background: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.multi-select-search-input {
+  width: 100%;
+  padding: 8px 35px 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  /* color: #374151 !important; */
+  background: white;
+  outline: none;
+}
+
+/* .multi-select-search-input::placeholder {
+  color: #9ca3af !important;
+} */
+
+/* .multi-select-search-input:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.1);
+} */
+
+.multi-select-search-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  /* color: #9ca3af !important; */
+  font-size: 0.875rem;
+  pointer-events: none;
+}
+
+.multi-select-options {
+  max-height: 260px;
+  overflow-y: auto;
+  background: white;
+}
+
+.multi-select-option {
+  padding: 12px 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.15s ease;
+  border-bottom: 1px solid #f9fafb;
+  background: white;
+  min-height: 44px;
+}
+
+.multi-select-option:hover {
+  background-color: #f9fafb !important;
+}
+
+.multi-select-option.selected {
+  background-color: #f3f4f6 !important;
+  /* border-left: 3px solid #8b5cf6; */
+}
+
+.multi-select-option.selected:hover {
+  background-color: #e5e7eb !important;
+}
+
+.option-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.option-icon {
+  /* color: #8b5cf6 !important; */
+  font-size: 0.875rem;
+  width: 16px;
+  text-align: center;
+}
+
+.option-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #374151 !important;
+  line-height: 1.4;
+  flex: 1;
+  text-align: left;
+}
+
+.multi-select-option.selected .option-label {
+  color: #7c3aed !important;
+  font-weight: 600;
+}
+
+.option-check {
+  color: #10b981 !important;
+  font-size: 0.875rem;
+  margin-left: 8px;
+}
+
+.no-options {
+  padding: 20px;
+  text-align: center;
+  color: #9ca3af !important;
+  font-style: italic;
+  background: white;
+}
+
+/* REMOVE THE OLD DROPDOWN MENU STYLES - This is what was causing the issue */
+/* The old .multi-select-dropdown-menu styles are commented out because
+   we now use .multi-select-dropdown-portal instead */
+
+/* Fix for regular select dropdowns */
+select {
+  color: #374151 !important;
+  background: white;
+  padding: 14px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+select option {
+  color: #374151 !important;
+  background: white;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+}
+
+select:focus {
+  outline: none;
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+/* Custom scrollbar for dropdown */
+.multi-select-options::-webkit-scrollbar {
+  width: 6px;
+}
+
+.multi-select-options::-webkit-scrollbar-track {
+  background: #94a3b8;
+}
+
+.multi-select-options::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 3px;
+}
+
+.multi-select-options::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .multi-select-trigger {
+    padding: 12px 14px;
+    min-height: 46px;
+  }
+  
+  .multi-select-value {
+    font-size: 0.95rem;
+  }
+  
+  .multi-select-dropdown-portal {
+    max-height: 250px;
+  }
+  
+  .multi-select-option {
+    padding: 10px 12px;
+    min-height: 40px;
+  }
+  
+  .option-label {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .multi-select-trigger {
+    padding: 10px 12px;
+    min-height: 42px;
+  }
+  
+  .multi-select-dropdown-portal {
+    max-height: 200px;
+  }
+  
+  .multi-select-option {
+    padding: 8px 10px;
+    min-height: 36px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .multi-select-dropdown-portal,
+  .multi-select-search,
+  .multi-select-options,
+  .multi-select-option {
+    /* background: #1f2937 !important;
+    border-color: #374151 !important; */
+  }
+  
+  .option-label,
+  .multi-select-value {
+    color: #f9fafb !important;
+  }
+  
+  .multi-select-option:hover {
+    background-color: #374151 !important;
+  }
+  
+  .multi-select-option.selected {
+    background-color: #1e40af !important;
+  }
+}
+/* Add these styles to your existing MultiSelectDropdown.css */
+
+.dropdown-footer {
+  padding: 8px 12px;
+  border-top: 1px solid #f3f4f6;
+  background: #f9fafb;
+  border-radius: 0 0 12px 12px;
+}
+
+.dropdown-close-btn {
+  width: 100%;
+  padding: 6px 12px;
+  background: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.dropdown-close-btn:hover {
+  background: #4b5563;
+}
+
+/* Update the portal max height to account for footer */
+.multi-select-dropdown-portal {
+  max-height: 350px; /* Increased to accommodate footer */
+}
+
+.multi-select-options {
+  max-height: 240px; /* Keep options scrollable area the same */
+}

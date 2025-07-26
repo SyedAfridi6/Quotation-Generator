@@ -1,0 +1,461 @@
+.timeline-visualizer {
+  background: white;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.timeline-header h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.view-controls {
+  display: flex;
+  background: #f1f5f9;
+  border-radius: 12px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.view-btn {
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.view-btn:hover {
+  color: #374151;
+}
+
+.view-btn.active {
+  background: white;
+  color: #667eea;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Timeline View */
+.timeline-summary {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 32px;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 16px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.summary-item i {
+  color: #667eea;
+  font-size: 1.1rem;
+}
+
+.timeline-phases {
+  position: relative;
+}
+
+.timeline-phase {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.timeline-phase:last-child {
+  margin-bottom: 0;
+}
+
+.phase-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 24px;
+}
+
+.phase-dot {
+  width: 24px;
+  height: 24px;
+  background: #667eea;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 0 4px white, 0 0 0 6px #667eea;
+}
+
+.connector-line {
+  width: 2px;
+  flex: 1;
+  background: #e5e7eb;
+  margin-top: 8px;
+  min-height: 60px;
+}
+
+.phase-content {
+  flex: 1;
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #667eea;
+}
+
+.phase-header {
+  margin-bottom: 16px;
+}
+
+.phase-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.phase-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.phase-duration {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.phase-dates {
+  color: #9ca3af;
+}
+
+.phase-description {
+  color: #4b5563;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.phase-deliverables h5,
+.phase-milestones h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.deliverables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.deliverable-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #4b5563;
+  padding: 4px 0;
+}
+
+.deliverable-item i {
+  color: #10b981;
+  font-size: 0.8rem;
+}
+
+.milestones-list {
+  display: grid;
+  gap: 8px;
+}
+
+.milestone-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.milestone-item i {
+  color: #f59e0b;
+  margin-right: 8px;
+}
+
+.milestone-date {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* Gantt View */
+.gantt-view {
+  background: #f8fafc;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.gantt-header {
+  background: #667eea;
+  color: white;
+}
+
+.gantt-row {
+  display: flex;
+  min-height: 50px;
+}
+
+.header-row {
+  font-weight: 600;
+}
+
+.gantt-phase-name {
+  width: 250px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.gantt-body .gantt-phase-name {
+  background: white;
+  border-right: 1px solid #e5e7eb;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.phase-number {
+  background: #667eea;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.phase-title {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 2px;
+}
+
+.phase-duration-small {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.gantt-timeline {
+  flex: 1;
+  display: flex;
+}
+
+.week-header {
+  flex: 1;
+  min-width: 40px;
+  padding: 12px 4px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gantt-body .week-header {
+  border-right: 1px solid #f3f4f6;
+}
+
+.gantt-week {
+  flex: 1;
+  min-width: 40px;
+  min-height: 50px;
+  border-right: 1px solid #f3f4f6;
+  border-bottom: 1px solid #f3f4f6;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.gantt-week.in-phase {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.gantt-week.first-week {
+  border-left: 3px solid #667eea;
+}
+
+.gantt-week.last-week {
+  border-right: 3px solid #667eea;
+}
+
+.phase-bar {
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 2px;
+}
+
+.phase-start-label {
+  position: absolute;
+  left: 8px;
+  font-size: 0.7rem;
+  color: white;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 16px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .timeline-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  .timeline-header h3 {
+    text-align: center;
+  }
+  
+  .view-controls {
+    align-self: center;
+  }
+  
+  .timeline-summary {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  .gantt-phase-name {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-visualizer {
+    padding: 20px;
+  }
+  
+  .timeline-header h3 {
+    font-size: 1.5rem;
+  }
+  
+  .timeline-summary {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .timeline-phase {
+    gap: 16px;
+  }
+  
+  .phase-content {
+    padding: 20px;
+  }
+  
+  .phase-title {
+    font-size: 1.2rem;
+  }
+  
+  .phase-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .deliverables-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .gantt-view {
+    overflow-x: auto;
+  }
+  
+  .gantt-phase-name {
+    width: 150px;
+    padding: 8px 12px;
+  }
+  
+  .week-header {
+    min-width: 30px;
+    padding: 8px 2px;
+    font-size: 0.7rem;
+  }
+  
+  .gantt-week {
+    min-width: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-phase {
+    gap: 12px;
+  }
+  
+  .phase-connector {
+    width: 20px;
+  }
+  
+  .phase-dot {
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 0 0 3px white, 0 0 0 5px #667eea;
+  }
+  
+  .phase-content {
+    padding: 16px;
+  }
+  
+  .gantt-phase-name {
+    width: 120px;
+    padding: 6px 8px;
+  }
+  
+  .phase-title {
+    font-size: 0.8rem;
+  }
+  
+  .phase-duration-small {
+    font-size: 0.7rem;
+  }
+}
